@@ -1,0 +1,3 @@
+[submodule "dnsmessage"]
+	path = dnsmessage
+	url = https://github.com/PowerDNS/dnsmessage.git
