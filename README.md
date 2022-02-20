@@ -2,6 +2,36 @@
 
 PowerDNS encoder and decoder protobuf implementation in Golang 
 
+## Installation
+
+```go
+go get -u github.com/dmachard/go-powerdns-protobuf
+```
+
+## Usage example
+
+Example to use the PowerDNS protobuf decoder
+
+```go
+```
+
+Example to use the owerDNS protobuf encoder
+
+```go
+```
+
+## Testing
+
+```bash
+```
+
+## Benchmark
+
+```bash
+```
+
+## Development
+
 Sync the dnsmessage.proto
 
     git submodule add https://github.com/PowerDNS/dnsmessage
