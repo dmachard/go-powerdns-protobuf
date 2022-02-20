@@ -3,6 +3,7 @@
 PowerDNS encoder and decoder protobuf implementation in Golang 
 
 Sync the dnsmessage.proto
+
     git submodule add https://github.com/PowerDNS/dnsmessage
     wget https://raw.githubusercontent.com/PowerDNS/dnsmessage/master/dnsmessage.proto
 
