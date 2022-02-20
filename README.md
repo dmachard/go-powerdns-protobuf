@@ -28,5 +28,6 @@ Past the following line in the dnsmessage.proto
 
 Generate the golang package
 
+    git submodule update --remote dnsmessage
     cd dnsmessage/
     ../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
