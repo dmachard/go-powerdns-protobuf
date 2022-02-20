@@ -22,11 +22,11 @@ Copy the dnsmessage.proto
 
     cp dnsmessage/dnsmessage.proto .
 
-Past the following lines in the dnsmessage.proto
+Past the following line in the dnsmessage.proto
 
-    package powerpdns;
-    option go_package = "github.com/dmachard/go-powerdns-dnsmessage-protobuf";
+    option go_package = "github.com/dmachard/go-powerdns-protobuf;powerdns_protobuf";
 
 Generate the golang package
 
-    bin/protoc --proto_path=. --go_out=. --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
+    cd dnsmessage/
+    ../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
