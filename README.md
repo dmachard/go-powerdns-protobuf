@@ -23,6 +23,13 @@ Example to use the owerDNS protobuf encoder
 ## Testing
 
 ```bash
+$ go test -v
+=== RUN   TestMarshal
+--- PASS: TestMarshal (0.00s)
+=== RUN   TestUnmarshal
+--- PASS: TestUnmarshal (0.00s)
+PASS
+ok      github.com/dmachard/go-powerdns-protobuf        0.002s
 ```
 
 ## Benchmark
