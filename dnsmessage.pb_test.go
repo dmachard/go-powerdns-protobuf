@@ -1,7 +1,6 @@
 package powerdns_protobuf
 
 import (
-	"fmt"
 	"testing"
 
 	"google.golang.org/protobuf/proto"
@@ -26,8 +25,6 @@ func TestMarshal(t *testing.T) {
 	if err != nil {
 		t.Errorf("error on encode powerdns protobuf message %s", err)
 	}
-	fmt.Println(wiremessage)
-
 	if len(wiremessage) != len(dm_ref) {
 		t.Errorf("size of the encoded message is different from reference")
 	}
@@ -37,7 +34,7 @@ func TestUnmarshal(t *testing.T) {
 	// init
 	dm := &PBDNSMessage{}
 
-	// Unmarshal parses a wire-format message and places the decoded results in dt.
+	// Unmarshal parses a wire-format message and places the decoded results in dm.
 	err := proto.Unmarshal(dm_ref, dm)
 	if err != nil {
 		t.Errorf("error on decode powerdns protobuf message %s", err)
