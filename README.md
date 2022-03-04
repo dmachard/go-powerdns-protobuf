@@ -60,6 +60,15 @@ ok      github.com/dmachard/go-powerdns-protobuf        0.002s
 ## Benchmark
 
 ```bash
+$ go test -bench=.
+goos: linux
+goarch: amd64
+pkg: github.com/dmachard/go-powerdns-protobuf
+cpu: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+BenchmarkUnmarshal-4     3656814               293.5 ns/op
+BenchmarkMarshal-4       3185277               344.2 ns/op
+PASS
+ok      github.com/dmachard/go-powerdns-protobuf        2.892s
 ```
 
 ## Development

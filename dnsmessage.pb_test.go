@@ -44,3 +44,39 @@ func TestUnmarshal(t *testing.T) {
 		t.Errorf("mismatch identity %s", string(dm.GetServerIdentity()))
 	}
 }
+
+func BenchmarkUnmarshal(b *testing.B) {
+	// init
+	dm := &PBDNSMessage{}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		err := proto.Unmarshal(dm_ref, dm)
+		if err != nil {
+			break
+		}
+	}
+}
+
+func BenchmarkMarshal(b *testing.B) {
+	// init
+	dm := &PBDNSMessage{}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dm.Reset()
+
+		dm.ServerIdentity = []byte("powerdnspb")
+		dm.Type = PBDNSMessage_DNSQueryType.Enum()
+
+		dm.SocketProtocol = PBDNSMessage_DNSCryptUDP.Enum()
+		dm.SocketFamily = PBDNSMessage_INET.Enum()
+		dm.FromPort = proto.Uint32(10000)
+		dm.ToPort = proto.Uint32(53)
+
+		_, err := proto.Marshal(dm)
+		if err != nil {
+			break
+		}
+	}
+}
