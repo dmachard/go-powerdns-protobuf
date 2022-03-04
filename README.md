@@ -13,11 +13,36 @@ go get -u github.com/dmachard/go-powerdns-protobuf
 Example to use the PowerDNS protobuf decoder
 
 ```go
+var dm_ref = []byte{8, 1, 26, 10, 112, 111, 119, 101, 114, 100, 110, 115, 112, 98, 32, 1, 40, 5, 160, 1, 144, 78, 168, 1, 53}
+
+
+dm := &PBDNSMessage{}
+
+err := proto.Unmarshal(dm_ref, dm)
+if err != nil {
+    fmt.Println("error on decode powerdns protobuf message %s", err)
+}
 ```
 
 Example to use the owerDNS protobuf encoder
 
 ```go
+dm := &PBDNSMessage{}
+
+dm.Reset()
+
+dm.ServerIdentity = []byte("powerdnspb")
+dm.Type = PBDNSMessage_DNSQueryType.Enum()
+
+dm.SocketProtocol = PBDNSMessage_DNSCryptUDP.Enum()
+dm.SocketFamily = PBDNSMessage_INET.Enum()
+dm.FromPort = proto.Uint32(10000)
+dm.ToPort = proto.Uint32(53)
+
+wiremessage, err := proto.Marshal(dm)
+if err != nil {
+    fmt.Println("error on encode powerdns protobuf message %s", err)
+}
 ```
 
 ## Testing
