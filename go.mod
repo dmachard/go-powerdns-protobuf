@@ -1,5 +1,5 @@
 module github.com/dmachard/go-powerdns-protobuf
 
-go 1.17
+go 1.19
 
-require google.golang.org/protobuf v1.27.1 // indirect
+require google.golang.org/protobuf v1.27.1
