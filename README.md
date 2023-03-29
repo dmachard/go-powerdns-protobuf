@@ -78,6 +78,11 @@ Add the proto schema as git submodule
 
     git submodule add https://github.com/PowerDNS/dnsmessage
 
+Update golang version
+
+    go mod edit -go=1.20
+    go mod tidy
+    
 Download the latest release of protoc and protoc-gen-go
 
     export PROTOC_VER=22.2
