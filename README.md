@@ -73,35 +73,46 @@ ok      github.com/dmachard/go-powerdns-protobuf        2.892s
 
 ## Development
 
-
 Add the proto schema as git submodule
 
-    git submodule add https://github.com/PowerDNS/dnsmessage
-
-Update golang version
-
-    go mod edit -go=1.20
-    go mod tidy
-    
-Download the latest release of protoc and protoc-gen-go
-
-    export PROTOC_VER=22.2
-    export GITHUB_URL=https://github.com/protocolbuffers
-    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-    wget $GITHUB_URL/protobuf/releases/download/v$PROTOC_VER/protoc-$PROTOC_VER-linux-x86_64.zip
-    unzip protoc-$PROTOC_VER-linux-x86_64.zip
+```bash
+git submodule add https://github.com/PowerDNS/dnsmessage
+```
 
 Export GOBIN
 
-    export GOROOT=/usr/local/go
-    export GOPATH=$HOME/go
-    export GOBIN=$GOPATH/bin
+```bash
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+```
+
+Update golang version
+
+```bash
+go mod edit -go=1.21
+go mod tidy
+```
+
+Download the latest release of protoc and protoc-gen-go
+
+```bash
+export PROTOC_VER=25.2
+export GITHUB_URL=https://github.com/protocolbuffers
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+wget $GITHUB_URL/protobuf/releases/download/v$PROTOC_VER/protoc-$PROTOC_VER-linux-x86_64.zip
+unzip protoc-$PROTOC_VER-linux-x86_64.zip
+```
 
 Edit and past the following line in the dnsmessage.proto
 
-    option go_package = "github.com/dmachard/go-powerdns-protobuf;powerdns_protobuf";
+```bash
+option go_package = "github.com/dmachard/go-powerdns-protobuf;powerdns_protobuf";
+```
 
 Generate the golang package
 
-    cd dnsmessage/
-    ../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
+```bash
+cd dnsmessage/
+../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
+```
