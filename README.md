@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/go%20version-min%201.21-green" alt="Go version"/>
+
 # go-powerdns-protobuf
 
 PowerDNS encoder and decoder protobuf implementation in Golang 
@@ -79,18 +81,10 @@ Add the proto schema as git submodule
 git submodule add https://github.com/PowerDNS/dnsmessage
 ```
 
-Export GOBIN
-
-```bash
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-```
-
 Update golang version
 
 ```bash
-go mod edit -go=1.21
+go mod edit -go=1.23
 go mod tidy
 ```
 
