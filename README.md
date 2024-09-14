@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/go%20version-min%201.21-green" alt="Go version"/>
+
 # go-powerdns-protobuf
 
 PowerDNS encoder and decoder protobuf implementation in Golang 
@@ -79,25 +81,17 @@ Add the proto schema as git submodule
 git submodule add https://github.com/PowerDNS/dnsmessage
 ```
 
-Export GOBIN
-
-```bash
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-```
-
 Update golang version
 
 ```bash
-go mod edit -go=1.21
+go mod edit -go=1.23
 go mod tidy
 ```
 
 Download the latest release of protoc and protoc-gen-go
 
 ```bash
-export PROTOC_VER=25.2
+export PROTOC_VER=28.1
 export GITHUB_URL=https://github.com/protocolbuffers
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 wget $GITHUB_URL/protobuf/releases/download/v$PROTOC_VER/protoc-$PROTOC_VER-linux-x86_64.zip
@@ -114,5 +108,5 @@ Generate the golang package
 
 ```bash
 cd dnsmessage/
-../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=${GOBIN}/protoc-gen-go dnsmessage.proto 
+../bin/protoc --proto_path=. --go_out=../ --go_opt=paths=source_relative --plugin protoc-gen-go=$(go env GOPATH)/bin/protoc-gen-go dnsmessage.proto 
 ```
