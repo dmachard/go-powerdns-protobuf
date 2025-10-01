@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/go%20version-min%201.22-green" alt="Go version"/>
+<img src="https://img.shields.io/badge/go%20version-min%201.23-green" alt="Go version"/>
 
 # go-powerdns-protobuf
 
@@ -91,7 +91,7 @@ go mod tidy
 Download the latest release of protoc and protoc-gen-go
 
 ```bash
-export PROTOC_VER=28.1
+export PROTOC_VER=32.1
 export GITHUB_URL=https://github.com/protocolbuffers
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 wget $GITHUB_URL/protobuf/releases/download/v$PROTOC_VER/protoc-$PROTOC_VER-linux-x86_64.zip
